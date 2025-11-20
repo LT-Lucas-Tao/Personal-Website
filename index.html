@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Tao | Developer & Game Maker</title>
+    <meta name="description" content="Year 10 student in Sydney. Aspiring developer & game-maker with interests in coding, game development, Valorant content, robotics, and math/science.">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Lucas Tao | Developer & Game Maker">
+    <meta property="og:description" content="Year 10 student in Sydney. Aspiring developer & game-maker.">
+    <meta property="og:type" content="website">
+    <!-- Add og:image with your actual image URL when deploying -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== CSS RESET & VARIABLES ===== */
+        :root {
+            /* Light theme colors */
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --accent: #06b6d4;
+            --accent-light: #22d3ee;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #f9fafb;
+            --bg-card: #ffffff;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            
+            /* Typography */
+            --font-ui: 'Inter', sans-serif;
+            --font-body: 'Source Sans Pro', sans-serif;
+            
+            /* Spacing */
+            --section-padding: 5rem 1.5rem;
+            --container-max-width: 1200px;
+            
+            /* Transitions */
+            --transition: all 0.3s ease;
+        }
+
+        /* Dark theme colors */
+        [data-theme="dark"] {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --accent: #06b6d4;
+            --accent-light: #22d3ee;
+            --text: #f9fafb;
+            --text-light: #d1d5db;
+            --bg: #111827;
+            --bg-card: #1f2937;
+            --border: #374151;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: var(--font-ui);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            color: white;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: var(--section-padding);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-ui);
+            font-weight: 500;
+            color: var(--text);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.25rem;
+            margin-left: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-img {
+            height: 180px;
+            background: var(--border);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: var(--bg);
+            color: var(--text);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .skill-level {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* ===== RESUME SECTION ===== */
+        .resume-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .achievements-list {
+            list-style: none;
+        }
+
+        .achievements-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .achievements-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .resume-download {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* ===== BLOG SECTION ===== */
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            color: var(--text);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            background: var(--bg-card);
+            color: var(--text);
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-card);
+            padding: 3rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-link {
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
+        }
+
+        .modal-body {
+            margin-bottom: 2rem;
+        }
+
+        .modal-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 992px) {
+            .hero-content, .hero-image {
+                padding-right: 0;
+            }
+            
+            .about-content, .resume-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: var(--bg-card);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-item {
+                margin: 1rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 6rem;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .profile-img {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 2rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .projects-grid, .blog-posts {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for keyboard navigation */
+        button:focus-visible,
+        a:focus-visible,
+        .form-input:focus-visible,
+        .form-textarea:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Skip link for keyboard users */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 1001;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">LT</div>
+                Lucas Tao
+            </a>
+            
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item">
+                        <button class="theme-toggle" aria-label="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="main-content">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">Year 10 Student</span>
+                <h1>Hi — I'm <span style="color: var(--accent);">Lucas Tao</span></h1>
+                <p class="subtitle" style="font-size: 1.25rem; color: var(--text-light); margin-bottom: 1.5rem;">
+                    Sydney-based • Aspiring developer & game-maker
+                </p>
+                <p>
+                    I'm passionate about coding, game development, and creating Valorant content. 
+                    When I'm not building projects, you can find me working on robotics, playing volleyball, 
+                    or exploring math and science concepts.
+                </p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-accent">View Projects</a>
+                    <a href="#resume" class="btn btn-outline">Download Resume</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-img" style="background: var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-light);">
+                    <i class="fas fa-user" style="font-size: 4rem;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div>
+                    <p>
+                        I'm a 14-year-old Year 10 student based in Sydney, Australia. My journey into 
+                        technology started when I was 12, and since then I've been constantly learning 
+                        and building projects that combine my interests in coding, gaming, and problem-solving.
+                    </p>
+                    <p>
+                        My current focus is on web development and game creation. I enjoy building interactive 
+                        experiences, whether it's a browser-based clicker game or a 3D prototype. When I'm not coding, 
+                        I'm either creating Valorant content, participating in robotics competitions, 
+                        or playing volleyball with friends.
+                    </p>
+                    <p>
+                        My learning goals for this year include building a strong GitHub portfolio, 
+                        mastering web development fundamentals, and exploring the basics of AI and machine learning.
+                    </p>
+                </div>
+                <div>
+                    <h3>Education & Activities</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2023 - Present</div>
+                            <h4>School Robotics Team</h4>
+                            <p>Participating in regional robotics competitions and learning about automation.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2022 - Present</div>
+                            <h4>Volleyball Team</h4>
+                            <p>Competing in school and local volleyball tournaments.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2021 - Present</div>
+                            <h4>Self-Taught Programming</h4>
+                            <p>Learning web development, Python, and game development through online resources.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section" style="background: var(--bg-card);">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="card project-card">
+                    <div class="project-img">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #ff4655, #1f2326); display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-gamepad" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <h3>Valorant Clicker</h3>
+                    <p>A web-based clicker game inspired by Valorant with agent abilities and weapon upgrades.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/GITHUB_USERNAME/valorant-clicker" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="project-link view-details" data-project="1">
+                            <i class="fas fa-external-link-alt"></i> Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card project-card">
+                    <div class="project-img">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4f8ff7, #8e44ad); display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-fighter-jet" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <h3>Skyblobs Fighter</h3>
+                    <p>A 2D fighting game prototype with blob characters using p5.js for graphics and physics.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">p5.js</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML5</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/GITHUB_USERNAME/skyblobs-fighter" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="project-link view-details" data-project="2">
+                            <i class="fas fa-external-link-alt"></i> Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card project-card">
+                    <div class="project-img">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2ecc71, #3498db); display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-file-invoice-dollar" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <h3>Insurance Tasks Module</h3>
+                    <p>A web app UI prototype for managing insurance tasks with a clean, responsive interface.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/GITHUB_USERNAME/insurance-tasks" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="project-link view-details" data-project="3">
+                            <i class="fas fa-external-link-alt"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://github.com/GITHUB_USERNAME" class="btn btn-outline" target="_blank">
+                    View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills & Tools</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">HTML</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">CSS</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Tailwind CSS</span>
+                            <span class="skill-level">Beginner</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Programming & Tools</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Git & GitHub</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Unity/Three.js</span>
+                            <span class="skill-level">Beginner</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Figma</span>
+                            <span class="skill-level">Beginner</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section" style="background: var(--bg-card);">
+        <div class="container">
+            <h2 class="section-title">Resume</h2>
+            <div class="resume-content">
+                <div>
+                    <h3>Education & Experience</h3>
+                    <p>
+                        I'm currently a Year 10 student with a strong focus on STEM subjects including 
+                        Mathematics, Science, and Information Technology. My academic performance is 
+                        consistently above average, particularly in technical subjects.
+                    </p>
+                    <p>
+                        Outside of school, I actively participate in extracurricular activities that 
+                        complement my interest in technology and problem-solving:
+                    </p>
+                    <ul class="achievements-list">
+                        <li>Member of the school robotics team, competing in regional events</li>
+                        <li>Developed multiple web-based games and applications as personal projects</li>
+                        <li>Created Valorant gameplay content and tutorials on YouTube</li>
+                        <li>Participated in coding workshops and hackathons</li>
+                        <li>Active member of the school volleyball team</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Download Resume</h3>
+                    <p>
+                        You can download my full resume in PDF format for more detailed information 
+                        about my education, projects, and achievements.
+                    </p>
+                    <div class="resume-download">
+                        <a href="#" class="btn btn-accent">
+                            <i class="fas fa-download"></i> Download Resume (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2 class="section-title">Blog & Notes</h2>
+            <div class="blog-posts">
+                <!-- Blog Post 1 -->
+                <div class="card blog-card">
+                    <h3>Getting Started with p5.js for Game Development</h3>
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> March 15, 2023</span>
+                        <span><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                    <div class="blog-excerpt">
+                        <p>My journey learning p5.js and how I used it to create my Skyblobs Fighter game prototype.</p>
+                    </div>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="card blog-card">
+                    <h3>Building a Clicker Game: Lessons Learned</h3>
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> February 3, 2023</span>
+                        <span><i class="far fa-clock"></i> 7 min read</span>
+                    </div>
+                    <div class="blog-excerpt">
+                        <p>What I discovered about game balance, progression systems, and player engagement while developing Valorant Clicker.</p>
+                    </div>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="card blog-card">
+                    <h3>Balancing School and Side Projects</h3>
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> January 12, 2023</span>
+                        <span><i class="far fa-clock"></i> 4 min read</span>
+                    </div>
+                    <div class="blog-excerpt">
+                        <p>Tips and strategies I use to manage my time between schoolwork, extracurriculars, and coding projects.</p>
+                    </div>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section" style="background: var(--bg-card);">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>lucas.tao@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Sydney, Australia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Social Links</h3>
+                            <div class="social-links">
+                                <a href="https://github.com/GITHUB_USERNAME" class="social-link" aria-label="GitHub" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="YouTube" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="LinkedIn" target="_blank">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="Discord" target="_blank">
+                                    <i class="fab fa-discord"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea id="message" class="form-textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-accent">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <div class="footer-logo">Lucas Tao</div>
+                    <p>Year 10 student and aspiring developer from Sydney, Australia.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#about" class="footer-link">About</a>
+                        <a href="#projects" class="footer-link">Projects</a>
+                        <a href="#skills" class="footer-link">Skills</a>
+                        <a href="#resume" class="footer-link">Resume</a>
+                        <a href="#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://github.com/GITHUB_USERNAME" class="footer-link" target="_blank">GitHub</a>
+                        <a href="#" class="footer-link" target="_blank">YouTube</a>
+                        <a href="#" class="footer-link" target="_blank">LinkedIn</a>
+                        <a href="#" class="footer-link" target="_blank">Discord</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2023 Lucas Tao. Built with <i class="fas fa-heart" style="color: #e74c3c;"></i> and pure HTML/CSS/JS.</p>
+                    <button class="theme-toggle" aria-label="Toggle dark mode" style="margin-top: 1rem;">
+                        <i class="fas fa-moon"></i> Toggle Theme
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2 id="modal-title">Project Title</h2>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== HOW TO CUSTOMIZE =====
+        // To customize this portfolio for your own use:
+        // 1. Replace "Lucas Tao" with your name throughout the HTML
+        // 2. Update the bio, interests, and location in the About section
+        // 3. Replace project details with your own projects
+        // 4. Update skill levels to match your expertise
+        // 5. Replace "GITHUB_USERNAME" with your actual GitHub username
+        // 6. Update social media links in the Contact section
+        // 7. Replace the placeholder email with your actual email
+        // 8. Add your own profile image by replacing the placeholder in the Hero section
+
+        // ===== JAVASCRIPT FUNCTIONALITY =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggle
+            const themeToggle = document.querySelectorAll('.theme-toggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Check for saved theme or prefered scheme
+            const currentTheme = localStorage.getItem('theme') || 
+                                (prefersDarkScheme.matches ? 'dark' : 'light');
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-sun"></i>';
+                });
+            }
+            
+            themeToggle.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    let theme = 'light';
+                    if (document.documentElement.getAttribute('data-theme') !== 'dark') {
+                        theme = 'dark';
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        themeToggle.forEach(b => {
+                            b.innerHTML = '<i class="fas fa-sun"></i>';
+                        });
+                    } else {
+                        document.documentElement.removeAttribute('data-theme');
+                        themeToggle.forEach(b => {
+                            b.innerHTML = '<i class="fas fa-moon"></i>';
+                        });
+                    }
+                    localStorage.setItem('theme', theme);
+                });
+            });
+
+            // Mobile Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Project Modal
+            const modal = document.getElementById('project-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            const closeModal = document.querySelector('.modal-close');
+            const viewDetailsButtons = document.querySelectorAll('.view-details');
+            
+            // Project data
+            const projects = {
+                1: {
+                    title: "Valorant Clicker",
+                    description: "A web-based clicker game inspired by Valorant with agent abilities and weapon upgrades.",
+                    longDescription: "<p>Valorant Clicker is an incremental game where players click to earn points, which can be used to unlock new agents, weapons, and abilities from the popular game Valorant.</p><p>The game features a progression system with upgrades, achievements, and a prestige mechanic that allows players to reset their progress for permanent bonuses.</p><p>This project helped me understand game balance, user interface design, and implementing complex game mechanics in vanilla JavaScript.</p>",
+                    tech: ["HTML", "CSS", "JavaScript"],
+                    links: {
+                        github: "https://github.com/GITHUB_USERNAME/valorant-clicker",
+                        demo: "#"
+                    },
+                    image: "linear-gradient(135deg, #ff4655, #1f2326)"
+                },
+                2: {
+                    title: "Skyblobs Fighter",
+                    description: "A 2D fighting game prototype with blob characters using p5.js for graphics and physics.",
+                    longDescription: "<p>Skyblobs Fighter is a 2D fighting game where players control blob characters with unique abilities. The game features simple physics, character movement, and attack mechanics.</p><p>Built with p5.js, this project taught me about game loops, collision detection, and implementing game physics. The visual style is minimalist with colorful characters and environments.</p><p>Future improvements could include multiplayer functionality, more characters, and enhanced visual effects.</p>",
+                    tech: ["p5.js", "JavaScript", "HTML5"],
+                    links: {
+                        github: "https://github.com/GITHUB_USERNAME/skyblobs-fighter",
+                        demo: "#"
+                    },
+                    image: "linear-gradient(135deg, #4f8ff7, #8e44ad)"
+                },
+                3: {
+                    title: "Insurance Tasks Module",
+                    description: "A web app UI prototype for managing insurance tasks with a clean, responsive interface.",
+                    longDescription: "<p>The Insurance Tasks Module is a React-based web application designed to help insurance agents manage their daily tasks, client information, and policy details.</p><p>This project focuses on creating an intuitive user interface with a clean design that improves workflow efficiency. It includes features like task categorization, priority settings, and progress tracking.</p><p>While this is currently a frontend prototype, it demonstrates my ability to design user-friendly interfaces for complex business applications.</p>",
+                    tech: ["React", "CSS", "JavaScript"],
+                    links: {
+                        github: "https://github.com/GITHUB_USERNAME/insurance-tasks",
+                        demo: "#"
+                    },
+                    image: "linear-gradient(135deg, #2ecc71, #3498db)"
+                }
+            };
+
+            // Open modal with project details
+            viewDetailsButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const projectId = this.getAttribute('data-project');
+                    const project = projects[projectId];
+                    
+                    modalTitle.textContent = project.title;
+                    
+                    let techTags = '';
+                    project.tech.forEach(tech => {
+                        techTags += `<span class="tech-tag">${tech}</span>`;
+                    });
+                    
+                    modalContent.innerHTML = `
+                        <div style="width: 100%; height: 200px; background: ${project.image}; border-radius: 0.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-project-diagram" style="font-size: 4rem;"></i>
+                        </div>
+                        ${project.longDescription}
+                        <div class="modal-tech">
+                            ${techTags}
+                        </div>
+                        <div class="modal-links">
+                            <a href="${project.links.github}" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="${project.links.demo}" class="btn btn-accent" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    `;
+                    
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close modal
+            function closeProjectModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            closeModal.addEventListener('click', closeProjectModal);
+            
+            // Close modal when clicking outside content
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeProjectModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeProjectModal();
+                }
+            });
+
+            // Form Validation
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // Simple validation
+                if (!name || !email || !message) {
+                    alert('Please fill in all fields.');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                
+                // In a real implementation, you would send the form data to a server
+                // For now, we'll just show a success message
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                contactForm.reset();
+                
+                // For a real implementation, you can use:
+                // - Formspree: https://formspree.io/
+                // - EmailJS: https://www.emailjs.com/
+                // - Netlify Forms: https://www.netlify.com/products/forms/
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Sticky header on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+                } else {
+                    header.style.boxShadow = 'var(--shadow)';
+                }
+            });
+
+            // Lazy loading for images (if added in the future)
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+
+            // Analytics placeholder (commented out)
+            /*
+            // Google Analytics
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'GA_MEASUREMENT_ID');
+            */
+        });
+    </script>
+</body>
+</html>
